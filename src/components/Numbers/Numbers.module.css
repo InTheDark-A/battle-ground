@@ -1,0 +1,11 @@
+.numbers{
+    background: url("../../assets/numbers.jpg") no-repeat right;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.numbers h1, .numbers h2, .numbers h3{
+    background: white;
+}
