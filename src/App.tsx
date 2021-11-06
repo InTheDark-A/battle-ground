@@ -1,19 +1,34 @@
 import React, {useState} from 'react';
-import './App.css';
 import 'antd/dist/antd.css';
+import './App.css';
 import {Layout, Menu} from 'antd';
-import {Content, Footer} from 'antd/lib/layout/layout';
 import Sider from 'antd/lib/layout/Sider';
 import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
-import {Header} from "antd/es/layout/layout";
-import {CodeOutlined, HeatMapOutlined, HomeOutlined, LinkOutlined, UserOutlined, FieldNumberOutlined} from '@ant-design/icons';
-import {Numbers} from "./components/Numbers/Numbers";
+import {
+    BulbOutlined,
+    CodeOutlined,
+    FieldNumberOutlined,
+    GithubOutlined,
+    HeatMapOutlined,
+    HomeOutlined,
+    LinkOutlined,
+    SmileOutlined,
+    UserOutlined,
+} from '@ant-design/icons';
 import {Provider} from "react-redux";
 import {setupStore} from "./redux/redux-store";
 import {Home} from "./components/Home/Home";
+import {withSuspenseComponent, withSuspenseComponentStandartBG} from "./components/utils/Loading/Loading";
+import {AboutMe} from "./components/AboutMe/AboutMe";
+
+const Numbers = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Numbers/Numbers').then(({Numbers}) => ({default: Numbers}))));
+const Animals = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Animals/Animals').then(({Animals}) => ({default: Animals}))));
+const Jokes = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Jokes/Jokes').then(({Jokes}) => ({default: Jokes}))));
+const Advices = withSuspenseComponent(React.lazy(() => import('./components/Advices/Advices').then(({Advices}) => ({default: Advices}))));
 
 function App() {
     const [collapsed, onCollapse] = useState(false);
+
     return (
         <div className="App">
             <Layout style={{minHeight: '100vh'}} hasSider={true}>
@@ -35,27 +50,32 @@ function App() {
                         <Menu.Item key="5" icon={<LinkOutlined/>}>
                             <Link to={"/contact"}>Contact</Link>
                         </Menu.Item>
-                        <Menu.Item key="6" icon={<FieldNumberOutlined />}>
+                        <Menu.Item key="6" icon={<FieldNumberOutlined/>}>
                             <Link to={"/numbers"}>Цифро Факты</Link>
+                        </Menu.Item>
+                        <Menu.Item key="7" icon={<GithubOutlined/>}>
+                            <Link to={"/animals"}>Котеки</Link>
+                        </Menu.Item>
+                        <Menu.Item key="8" icon={<SmileOutlined/>}>
+                            <Link to={"/jokes"}>Шутки и Аниме</Link>
+                        </Menu.Item>
+                        <Menu.Item key="9" icon={<BulbOutlined/>}>
+                            <Link to={"/advices"}>Советы</Link>
                         </Menu.Item>
                     </Menu>
                 </Sider>
                 <Layout className="site-layout">
-                    <Header className="site-layout-background" style={{padding: 0}}/>
-                    <Content style={{margin: '0 16px'}}>
-                        <div className="site-layout-background" style={{padding: 24, height: "100%"}}>
-                            <Switch>
-                                {/*<Route exact path={"/about-me"} render={<></>}/>*/}
-                                {/*<Route exact path={"/contact"} component={<div>1</div>}/>*/}
-                                {/*<Route exact path={"/skills"} component={<div>1</div>}/>*/}
-                                {/*<Route exact path={"/works"} component={<div>1</div>}/>*/}
-                                <Route exact path={"/numbers"} component={Numbers}/>
-                                <Route exact path={"/"} component={Home}/>
-
-                            </Switch>
-                        </div>
-                    </Content>
-                    <Footer style={{textAlign: 'center'}}>©Турникет Шашахметов</Footer>
+                    <Switch>
+                            <Route exact path={"/"} component={Home}/>
+                            <Route exact path={"/about-me"} component={AboutMe}/>
+                            {/*<Route exact path={"/contact"} component={<div>1</div>}/>*/}
+                            {/*<Route exact path={"/skills"} component={<div>1</div>}/>*/}
+                            {/*<Route exact path={"/works"} component={<div>1</div>}/>*/}
+                            <Route exact path={"/animals"} component={Animals}/>
+                            <Route exact path={"/jokes"} component={Jokes}/>
+                            <Route exact path={"/numbers"} component={Numbers}/>
+                            <Route exact path={"/advices"} component={Advices}/>
+                    </Switch>
                 </Layout>
             </Layout>
         </div>
@@ -67,9 +87,9 @@ const store = setupStore();
 const FinalApp = () => {
     return (
         <BrowserRouter>
-          <Provider store={store}>
-            <App/>
-          </Provider>
+            <Provider store={store}>
+                <App/>
+            </Provider>
         </BrowserRouter>
     )
 }

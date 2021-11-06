@@ -1,18 +1,20 @@
 import {combineReducers} from "redux";
 import {configureStore} from "@reduxjs/toolkit";
-import {ApiFirst, ApiNumber} from "../services/Api";
+import {ApiAnimals, ApiFirst, ApiNumber} from "../services/Api";
 import appReducer from "./appSlice";
 
 let rootReducer = combineReducers({
     filesReducer: appReducer,
     [ApiFirst.reducerPath]: ApiFirst.reducer,
-    [ApiNumber.reducerPath]: ApiNumber.reducer
+    [ApiNumber.reducerPath]: ApiNumber.reducer,
+    [ApiAnimals.reducerPath]: ApiAnimals.reducer,
 });
 
 export const setupStore = () => {
     return configureStore({
         reducer: rootReducer,
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(ApiFirst.middleware, ApiNumber.middleware),
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware().concat(ApiFirst.middleware, ApiNumber.middleware, ApiAnimals.middleware),
     })
 }
 

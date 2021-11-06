@@ -3,7 +3,6 @@ import {ApiNumber} from "../../services/Api";
 import {Button, Divider, Input, Space} from 'antd';
 import Title from "antd/lib/typography/Title";
 import styles from "./Numbers.module.css";
-import Paragraph from "antd/es/typography/Paragraph";
 
 function getRandomNum(max: number, min: number) {
     max += min;

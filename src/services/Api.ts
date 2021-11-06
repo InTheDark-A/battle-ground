@@ -27,4 +27,14 @@ export const ApiNumber = createApi({
     })
 })
 
-
+export const ApiAnimals = createApi({
+    reducerPath: "animalsApi",
+    baseQuery: fetchBaseQuery({baseUrl: "https://aws.random.cat"}),
+    endpoints: (builder) => ({
+        getPicture: builder.query({
+            query: _ => ({
+                url: `/meow`,
+            })
+        })
+    })
+})
