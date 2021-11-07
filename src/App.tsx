@@ -1,9 +1,4 @@
 import React, {useState} from 'react';
-import 'antd/dist/antd.css';
-import './App.css';
-import {Layout, Menu} from 'antd';
-import Sider from 'antd/lib/layout/Sider';
-import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
 import {
     BulbOutlined,
     CodeOutlined,
@@ -15,10 +10,17 @@ import {
     SmileOutlined,
     UserOutlined,
 } from '@ant-design/icons';
+import 'antd/dist/antd.css';
+import './App.css';
+import {Layout, Menu} from 'antd';
+import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
 import {Provider} from "react-redux";
 import {setupStore} from "./redux/redux-store";
 import {Home} from "./components/Home/Home";
 import {withSuspenseComponent, withSuspenseComponentStandartBG} from "./components/utils/Loading/Loading";
+
+const {Header, Content, Footer, Sider} = Layout;
+const {SubMenu} = Menu;
 
 const Numbers = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Numbers/Numbers').then(({Numbers}) => ({default: Numbers}))));
 const Animals = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Animals/Animals').then(({Animals}) => ({default: Animals}))));
@@ -27,14 +29,15 @@ const Draw = withSuspenseComponentStandartBG(React.lazy(() => import('./componen
 const Advices = withSuspenseComponent(React.lazy(() => import('./components/Advices/Advices').then(({Advices}) => ({default: Advices}))));
 const AboutMe = withSuspenseComponent(React.lazy(() => import('./components/AboutMe/AboutMe').then(({AboutMe}) => ({default: AboutMe}))));
 
-const App = React.memo(()=> {
+const App = React.memo(() => {
     const [collapsed, onCollapse] = useState(false);
 
     console.log("render");
     return (
         <div className="App">
             <Layout style={{minHeight: '100vh'}} hasSider={true}>
-                <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+                <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} breakpoint={"lg"} collapsedWidth={50}
+                onBreakpoint={(broken) => {console.log(broken)}}>
                     <div className="logo"/>
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                         <Menu.Item key="1" icon={<HomeOutlined/>}>
