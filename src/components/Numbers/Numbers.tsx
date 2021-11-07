@@ -45,6 +45,7 @@ const arrayNotifications = [
     "Разберу",
     "И соберу",
     "Пиши свой адрес в форму",
+    "Не стесняйся, пиши адрес",
     "Всё, за тобой выехали",
     "Тикай с городу",
     "Ты понимаешь, если ты сейчас не остановишься",
@@ -84,7 +85,7 @@ export const Numbers: React.FC = () => {
 
     useEffect(() => {
         if (!isError) {
-            if(i < arrayNotifications.length - 1)
+            if (i < arrayNotifications.length - 1)
                 i++;
         }
     }, [isError])
@@ -96,9 +97,10 @@ export const Numbers: React.FC = () => {
             <Button onClick={() => changeText(getRandomNum(1000, 1000).toString())}>Взять рандомный число</Button>
         </Space>
         <Divider/>
-        {isError ? <Title level={2} type={"danger"} style={{textShadow: "0 0 2px black", maxWidth:700}}>
-            {arrayNotifications[i]}
-        </Title> : ""}
+        {isError ?
+            <Title level={2} type={"danger"} style={{textShadow: "0 0 2px black", maxWidth: 700}}>
+                {isNaN(+text) ? arrayNotifications[i] : "Какая-то ошибка ебола с сервером"}
+            </Title> : ""}
         {isLoading && "Загрузка"}
         {!isError && <Title style={{maxWidth: '700px'}} level={3}>{data}</Title>}
     </div>
