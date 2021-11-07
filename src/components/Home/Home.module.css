@@ -1,21 +1,21 @@
-.home{
-    animation: neon 2s ease-in-out infinite alternate;
-    color: white;
-}
+/*.home{*/
+/*    animation: neon 2s ease-in-out infinite alternate;*/
+/*    color: white;*/
+/*}*/
 
 
-@keyframes neon {
-    from {
-        text-shadow: 0 0 5px #3c9ae8,
-        0 0 10px #3c9ae8,
-        0 0 15px #3c9ae8,
-        0 0 20px #3c9ae8;
-    }
-    to {
-        text-shadow: 0 0 20px #3c9ae8,
-        0 0 35px #3c9ae8,
-        0 0 40px #3c9ae8,
-        0 0 50px #3c9ae8,
-        0 0 800px #3c9ae8;
-    }
-}
+/*@keyframes neon {*/
+/*    from {*/
+/*        text-shadow: 0 0 5px #3c9ae8,*/
+/*        0 0 10px #3c9ae8,*/
+/*        0 0 15px #3c9ae8,*/
+/*        0 0 20px #3c9ae8;*/
+/*    }*/
+/*    to {*/
+/*        text-shadow: 0 0 20px #3c9ae8,*/
+/*        0 0 35px #3c9ae8,*/
+/*        0 0 40px #3c9ae8,*/
+/*        0 0 50px #3c9ae8,*/
+/*        0 0 800px #3c9ae8;*/
+/*    }*/
+/*}*/

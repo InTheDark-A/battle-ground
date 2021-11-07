@@ -8,7 +8,6 @@ export const Animals: FC<any> = () => {
     useEffect(() => {
         trigger("")
     },[])
-    console.log("рендер")
     return <Space  direction={"vertical"}>
         <Button disabled={isLoading} onClick={() => {trigger("")}}>Загрузить другую картинку</Button>
         <div>

@@ -1,7 +1,7 @@
 import {Carousel} from "antd";
 import React, {CSSProperties} from "react";
 import "./AboutMe.css";
-import {Layout} from "../utils/Loading/Loading";
+import {LayoutBG} from "../utils/Loading/Loading";
 
 function onChange(a: any) {
     console.log(a);
@@ -18,7 +18,7 @@ const contentStyle: CSSProperties = {
 export const AboutMe: React.FC = () => {
 
     return (
-        <Layout>
+        <LayoutBG>
             <Info/>
             <div className='light x1'/>
             <div className='light x2'/>
@@ -29,7 +29,7 @@ export const AboutMe: React.FC = () => {
             <div className='light x7'/>
             <div className='light x8'/>
             <div className='light x9'/>
-        </Layout>
+        </LayoutBG>
     )
 }
 

@@ -3,7 +3,7 @@ import {Button, Space} from 'antd';
 import {useFetch} from "../../utils/hooks";
 import Title from "antd/es/typography/Title";
 import styles from "./Advices.module.css";
-import {Layout} from "../utils/Loading/Loading";
+import {LayoutBG} from "../utils/Loading/Loading";
 
 export const Advices: React.FC = () => {
     const [advice, setAdvice] = useState("");
@@ -18,7 +18,7 @@ export const Advices: React.FC = () => {
     }, [])
 
     return (
-        <Layout className={styles.block}>
+        <LayoutBG className={styles.block}>
             <Space direction={"horizontal"} align={"center"} wrap={true}>
                 <Button loading={loading} onClick={() => getAdvice()} style={{fontSize: "2em", height: "auto"}}>
                     Совет
@@ -27,7 +27,7 @@ export const Advices: React.FC = () => {
                     {advice}
                 </Title>
             </Space>
-        </Layout>
+        </LayoutBG>
     )
 }
 

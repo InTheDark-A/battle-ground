@@ -6,13 +6,19 @@ import {Header} from "antd/es/layout/layout";
 
 export function withSuspenseComponentStandartBG<WCP>(Component: React.ComponentType<WCP>) {
     return (props: WCP) => {
-        return <Layout>
+        return <LayoutBG>
             <Suspense fallback={<Loading/>}><Component {...props}/></Suspense>
-        </Layout>;
+        </LayoutBG>;
+    }
+};
+
+export function withSuspenseComponent<WCP>(Component: React.ComponentType<WCP>) {
+    return (props: WCP) => {
+        return <Suspense fallback={<Loading/>}><Component {...props}/></Suspense>;
     }
 }
 
-export const Layout = ({children, className}: { children: ReactElement | React.ReactNode, className?: string | undefined }) => {
+export const LayoutBG = ({children, className}: { children: ReactElement | React.ReactNode, className?: string | undefined }) => {
     if (!className) {
         className = "site-layout-background site-layout-background_changed";
     }
@@ -26,11 +32,7 @@ export const Layout = ({children, className}: { children: ReactElement | React.R
     </>
 }
 
-export function withSuspenseComponent<WCP>(Component: React.ComponentType<WCP>) {
-    return (props: WCP) => {
-        return <Suspense fallback={<Loading/>}><Component {...props}/></Suspense>;
-    }
-}
+
 
 export const Loading = () => {
     return (<Button loading={true}/>)
