@@ -20,10 +20,10 @@ import {setupStore} from "./redux/redux-store";
 import {Home} from "./components/Home/Home";
 import {withSuspenseComponent, withSuspenseComponentStandartBG} from "./components/utils/Loading/Loading";
 
-// const Numbers = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Numbers/Numbers').then(({Numbers}) => ({default: Numbers}))));
+const Numbers = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Numbers/Numbers').then(({Numbers}) => ({default: Numbers}))));
 const Animals = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Animals/Animals').then(({Animals}) => ({default: Animals}))));
-// const Jokes = withSuspenseComponent(React.lazy(() => import('./components/Jokes/Jokes').then(({Jokes}) => ({default: Jokes}))));
-// const Draw = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Draw/Draw').then(({Draw}) => ({default: Draw}))));
+const Jokes = withSuspenseComponent(React.lazy(() => import('./components/Jokes/Jokes').then(({Jokes}) => ({default: Jokes}))));
+const Draw = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Draw/Draw').then(({Draw}) => ({default: Draw}))));
 const Advices = withSuspenseComponent(React.lazy(() => import('./components/Advices/Advices').then(({Advices}) => ({default: Advices}))));
 const AboutMe = withSuspenseComponent(React.lazy(() => import('./components/AboutMe/AboutMe').then(({AboutMe}) => ({default: AboutMe}))));
 
@@ -77,10 +77,10 @@ const App = React.memo(()=> {
                         {/*<Route exact path={"/skills"} component={<div>1</div>}/>*/}
                         {/*<Route exact path={"/works"} component={<div>1</div>}/>*/}
                         <Route exact path={"/animals"} component={Animals}/>
-                        {/*<Route exact path={"/jokes"} component={Jokes}/>*/}
-                        {/*<Route exact path={"/numbers"} component={Numbers}/>*/}
+                        <Route exact path={"/jokes"} component={Jokes}/>
+                        <Route exact path={"/numbers"} component={Numbers}/>
                         <Route exact path={"/advices"} component={Advices}/>
-                        {/*<Route exact path={"/draw"} component={Draw}/>*/}
+                        <Route exact path={"/draw"} component={Draw}/>
                     </Switch>
                 </Layout>
             </Layout>
