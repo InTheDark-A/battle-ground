@@ -99,7 +99,7 @@ export const Numbers: React.FC = () => {
         <Divider/>
         {isError ?
             <Title level={2} type={"danger"} style={{textShadow: "0 0 2px black", maxWidth: 700}}>
-                {isNaN(+text) ? arrayNotifications[i] : "Какая-то ошибка ебола с сервером"}
+                {isNaN(+text) ? arrayNotifications[i] : "Какая-то ошибка херня с сервером"}
             </Title> : ""}
         {isLoading && "Загрузка"}
         {!isError && <Title style={{maxWidth: '700px'}} level={3}>{data}</Title>}

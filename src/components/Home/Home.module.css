@@ -11,13 +11,27 @@
     0 0 10px #3c9ae8,
     0 0 15px #3c9ae8,
     0 0 20px #3c9ae8;
-
 }
 
 .home svg{
     filter: drop-shadow(0 0 5px #3c9ae8);
     fill: lightgray;
 }
+
+
+.block{
+    background: #001529;
+    box-shadow: 0 0 5px black,
+    0 0 10px black,
+    0 0 15px black,
+    0 0 20px black;
+    padding: 20px;
+    text-shadow: 0 0 5px #3c9ae8,
+    0 0 10px #3c9ae8,
+    0 0 15px #3c9ae8,
+    0 0 20px #3c9ae8;
+}
+
 
 
 @keyframes neon {

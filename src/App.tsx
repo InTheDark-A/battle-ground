@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import {
     BulbOutlined,
-    CodeOutlined,
+    EditOutlined,
     FieldNumberOutlined,
     GithubOutlined,
-    HeatMapOutlined,
     HomeOutlined,
-    LinkOutlined,
     SmileOutlined,
     UserOutlined,
 } from '@ant-design/icons';
@@ -20,7 +18,6 @@ import {Home} from "./components/Home/Home";
 import {withSuspenseComponent, withSuspenseComponentStandartBG} from "./components/utils/Loading/Loading";
 
 const {Header, Content, Footer, Sider} = Layout;
-const {SubMenu} = Menu;
 
 const Numbers = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Numbers/Numbers').then(({Numbers}) => ({default: Numbers}))));
 const Animals = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Animals/Animals').then(({Animals}) => ({default: Animals}))));
@@ -31,8 +28,6 @@ const AboutMe = withSuspenseComponent(React.lazy(() => import('./components/Abou
 
 const App = React.memo(() => {
     const [collapsed, onCollapse] = useState(false);
-
-    console.log("render");
     return (
         <div className="App">
             <Layout style={{minHeight: '100vh'}} hasSider={true}>
@@ -46,15 +41,6 @@ const App = React.memo(() => {
                         <Menu.Item key="2" icon={<UserOutlined/>}>
                             <Link to={"/about-me"}>About me</Link>
                         </Menu.Item>
-                        <Menu.Item key="3" icon={<HeatMapOutlined/>}>
-                            <Link to={"/skills"}>Skills</Link>
-                        </Menu.Item>
-                        <Menu.Item key="4" icon={<CodeOutlined/>}>
-                            <Link to={"/works"}>Works</Link>
-                        </Menu.Item>
-                        <Menu.Item key="5" icon={<LinkOutlined/>}>
-                            <Link to={"/contact"}>Contact</Link>
-                        </Menu.Item>
                         <Menu.Item key="6" icon={<FieldNumberOutlined/>}>
                             <Link to={"/numbers"}>Цифро Факты</Link>
                         </Menu.Item>
@@ -67,7 +53,7 @@ const App = React.memo(() => {
                         <Menu.Item key="9" icon={<BulbOutlined/>}>
                             <Link to={"/advices"}>Советы</Link>
                         </Menu.Item>
-                        <Menu.Item key="10" icon={<BulbOutlined/>}>
+                        <Menu.Item key="10" icon={<EditOutlined />}>
                             <Link to={"/draw"}>Draw</Link>
                         </Menu.Item>
                     </Menu>
@@ -76,9 +62,6 @@ const App = React.memo(() => {
                     <Switch>
                         <Route exact path={"/"} component={Home}/>
                         <Route exact path={"/about-me"} component={AboutMe}/>
-                        {/*<Route exact path={"/contact"} component={<div>1</div>}/>*/}
-                        {/*<Route exact path={"/skills"} component={<div>1</div>}/>*/}
-                        {/*<Route exact path={"/works"} component={<div>1</div>}/>*/}
                         <Route exact path={"/animals"} component={Animals}/>
                         <Route exact path={"/jokes"} component={Jokes}/>
                         <Route exact path={"/numbers"} component={Numbers}/>
