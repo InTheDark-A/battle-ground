@@ -1,4 +1,4 @@
-import {Carousel} from "antd";
+import {Carousel, Space, Typography} from "antd";
 import React, {CSSProperties} from "react";
 import "./AboutMe.css";
 import {LayoutBG} from "../utils/Loading/Loading";
@@ -50,5 +50,16 @@ const Info = () => {
                 <h3 style={contentStyle}>Бесполезный слайдер</h3>
             </div>
         </Carousel>
+        <Space>
+            <Typography>
+                <Typography.Paragraph>На момент написания 07.11.2021.
+                    Я студент долбоёб, обучаюсь на ИРИТ-РТФ, звать бродягой, по жизне Шагиахметов Артур, иногда
+                    Алёна.</Typography.Paragraph>
+                <Typography.Paragraph>
+                    Владею навыками: js, ts, css, scss, React, чуть-чуть c#, git, Ant-Design, Photoshop, Rest Api
+                </Typography.Paragraph>
+            </Typography>
+
+        </Space>
     </div>;
 }

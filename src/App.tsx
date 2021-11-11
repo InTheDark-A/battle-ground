@@ -22,42 +22,15 @@ const {Header, Content, Footer, Sider} = Layout;
 const Numbers = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Numbers/Numbers').then(({Numbers}) => ({default: Numbers}))));
 const Animals = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Animals/Animals').then(({Animals}) => ({default: Animals}))));
 const Jokes = withSuspenseComponent(React.lazy(() => import('./components/Jokes/Jokes').then(({Jokes}) => ({default: Jokes}))));
-const Draw = withSuspenseComponentStandartBG(React.lazy(() => import('./components/Draw/Draw').then(({Draw}) => ({default: Draw}))));
+const Draw = withSuspenseComponent(React.lazy(() => import('./components/Draw/Draw').then(({Draw}) => ({default: Draw}))));
 const Advices = withSuspenseComponent(React.lazy(() => import('./components/Advices/Advices').then(({Advices}) => ({default: Advices}))));
 const AboutMe = withSuspenseComponent(React.lazy(() => import('./components/AboutMe/AboutMe').then(({AboutMe}) => ({default: AboutMe}))));
 
 const App = React.memo(() => {
-    const [collapsed, onCollapse] = useState(false);
     return (
         <div className="App">
             <Layout style={{minHeight: '100vh'}} hasSider={true}>
-                <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} breakpoint={"lg"} collapsedWidth={50}
-                onBreakpoint={(broken) => {console.log(broken)}}>
-                    <div className="logo"/>
-                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                        <Menu.Item key="1" icon={<HomeOutlined/>}>
-                            <Link to={"/"}>Home</Link>
-                        </Menu.Item>
-                        <Menu.Item key="2" icon={<UserOutlined/>}>
-                            <Link to={"/about-me"}>About me</Link>
-                        </Menu.Item>
-                        <Menu.Item key="6" icon={<FieldNumberOutlined/>}>
-                            <Link to={"/numbers"}>Цифро Факты</Link>
-                        </Menu.Item>
-                        <Menu.Item key="7" icon={<GithubOutlined/>}>
-                            <Link to={"/animals"}>Котеки</Link>
-                        </Menu.Item>
-                        <Menu.Item key="8" icon={<SmileOutlined/>}>
-                            <Link to={"/jokes"}>Шутки и Аниме</Link>
-                        </Menu.Item>
-                        <Menu.Item key="9" icon={<BulbOutlined/>}>
-                            <Link to={"/advices"}>Советы</Link>
-                        </Menu.Item>
-                        <Menu.Item key="10" icon={<EditOutlined />}>
-                            <Link to={"/draw"}>Draw</Link>
-                        </Menu.Item>
-                    </Menu>
-                </Sider>
+                <SiderL />
                 <Layout className="site-layout">
                     <Switch>
                         <Route exact path={"/"} component={Home}/>
@@ -72,7 +45,37 @@ const App = React.memo(() => {
             </Layout>
         </div>
     );
-})
+});
+
+const SiderL = () => {
+    const [collapsed, onCollapse] = useState(false);
+    return <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} breakpoint={"lg"} collapsedWidth={50}>
+        <div className="logo"/>
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+            <Menu.Item key="1" icon={<HomeOutlined/>}>
+                <Link to={"/"}>Home</Link>
+            </Menu.Item>
+            <Menu.Item key="2" icon={<UserOutlined/>}>
+                <Link to={"/about-me"}>About me</Link>
+            </Menu.Item>
+            <Menu.Item key="6" icon={<FieldNumberOutlined/>}>
+                <Link to={"/numbers"}>Цифро Факты</Link>
+            </Menu.Item>
+            <Menu.Item key="7" icon={<GithubOutlined/>}>
+                <Link to={"/animals"}>Котеки</Link>
+            </Menu.Item>
+            <Menu.Item key="8" icon={<SmileOutlined/>}>
+                <Link to={"/jokes"}>Шутки и Аниме</Link>
+            </Menu.Item>
+            <Menu.Item key="9" icon={<BulbOutlined/>}>
+                <Link to={"/advices"}>Советы</Link>
+            </Menu.Item>
+            <Menu.Item key="10" icon={<EditOutlined/>}>
+                <Link to={"/draw"}>Draw</Link>
+            </Menu.Item>
+        </Menu>
+    </Sider>
+}
 
 
 const store = setupStore();

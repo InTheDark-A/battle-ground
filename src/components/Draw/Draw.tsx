@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {memo, useEffect, useRef} from "react";
 import "./Draw.css";
 import {Button, Slider} from "antd";
 // @ts-ignore-block
@@ -11,9 +11,8 @@ const Func = (e: KeyboardEvent) => {
 let color = "black";
 let lineWidth = 10;
 
-export const Draw: React.FC = () => {
+export const Draw: React.FC = memo(() => {
     const ref = useRef<HTMLCanvasElement | null>(null);
-
     useEffect(() => {
         if (!ref.current)
             return;
@@ -24,20 +23,22 @@ export const Draw: React.FC = () => {
         };
     }, [ref.current])
     return (
-        <>
+        <div style={{height:"100%"}}>
             <div style={{position: "absolute"}}>
-                <Slider defaultValue={lineWidth} onChange={(e) => {lineWidth = e}}/>
-                <input  type={"color"} onChange={(e) => {
+                <Slider defaultValue={lineWidth} onChange={(e) => {
+                    lineWidth = e
+                }}/>
+                <input type={"color"} onChange={(e) => {
                     color = e.target.value;
                 }}/>
                 <Button onClick={() => {
-                    color = "#a8c1f8"
+                    color = "#f0f2f5"
                 }}>Цвет фона</Button>
             </div>
             <canvas style={{width: "100%", height: "100%", display: "block"}} ref={ref}/>
-        </>
+        </div>
     )
-}
+})
 
 function Canvas(canvas: HTMLCanvasElement) {
     canvas.width = canvas.offsetWidth;

@@ -4,7 +4,7 @@ import {ApiAnimals, ApiFirst, ApiNumber} from "../services/Api";
 import appReducer from "./appSlice";
 
 let rootReducer = combineReducers({
-    filesReducer: appReducer,
+    appReducer: appReducer,
     [ApiFirst.reducerPath]: ApiFirst.reducer,
     [ApiNumber.reducerPath]: ApiNumber.reducer,
     [ApiAnimals.reducerPath]: ApiAnimals.reducer,
